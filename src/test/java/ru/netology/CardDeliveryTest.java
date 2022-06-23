@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Duration;
 
 import org.openqa.selenium.Keys;
-import ru.netology.PageObject.GenerateDate;
+import ru.netology.dateConfig.GenerateDate;
 
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,12 +20,13 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("button .button__content").click();
         $("[data-test-id=\"notification\"] .notification__content").should(Condition.visible, Duration.ofSeconds(15));
+        $("[data-test-id=\"notification\"] .notification__content").shouldHave(Condition.text(date.setDateNotEarlyThreeDays(3)));
     }
 
     @Test
@@ -33,7 +34,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("КАЛИНИНГРАД");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -46,7 +47,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -58,7 +59,7 @@ public class CardDeliveryTest {
     void shouldValidationMessageWhenCityIsEmpty() {
         open("http://localhost:9999");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -85,7 +86,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("button .button__content").click();
@@ -98,7 +99,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("button .button__content").click();
@@ -111,7 +112,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("button .button__content").click();
@@ -124,7 +125,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Moscow");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -138,7 +139,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград1");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -152,7 +153,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калин инград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -166,7 +167,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград!");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -180,7 +181,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Кишинев");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -194,7 +195,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград Москва");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -208,7 +209,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyTwoDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(2));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -222,7 +223,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setCurrentDate());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(0));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -236,7 +237,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateForOneMonth());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(31));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -249,7 +250,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateForOneYear());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(365));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -262,7 +263,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей1");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -276,7 +277,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей!");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -290,7 +291,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Contevici Sergiu");
         $("[data-test-id=\"phone\"] .input__control").val("+79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -304,7 +305,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -318,7 +319,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+7924563214");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -332,7 +333,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("+792456321451");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -346,7 +347,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("*79245632145");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
@@ -360,7 +361,7 @@ public class CardDeliveryTest {
         open("http://localhost:9999");
         $("[data-test-id=\"city\"] .input__control").val("Калининград");
         $("[data-test-id=\"date\"] .input__control").sendKeys(Keys.CONTROL, Keys.BACK_SPACE);
-        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays());
+        $("[data-test-id=\"date\"] .input__control").val(date.setDateNotEarlyThreeDays(3));
         $("[data-test-id=\"name\"] .input__control").val("Концевич-Иванов Сергей");
         $("[data-test-id=\"phone\"] .input__control").val("79245632145+");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
